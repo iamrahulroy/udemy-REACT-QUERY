@@ -17,8 +17,9 @@ export function Posts() {
 
   // replace with useQuery
   // const data = [];
-  const { data } = useQuery("posts", fetchPosts);
-  if (!data) return <div />;
+  const { data, isError, isLoading } = useQuery("posts", fetchPosts);
+  if (isLoading) return <h3>Loading...</h3>;
+  if (isError) return <h3>Error...</h3>;
 
   return (
     <>
